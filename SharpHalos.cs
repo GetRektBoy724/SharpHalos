@@ -165,7 +165,7 @@ public class SharpHalos {
                     }else {
                         // check for neighbouring syscall up
                         for (int z = 1; z < 50; z++) {
-                            Copy((FunctionAddress + (32 * z)), ref FunctionOpcode, 0, 24);
+                            Copy((FunctionAddress + (-32 * z)), ref FunctionOpcode, 0, 24);
                             if (CheckStubIntegrity(FunctionOpcode)) {
                                 SyscallTableEntry table = new SyscallTableEntry();
                                 table.Name = FunctionName;
@@ -178,7 +178,7 @@ public class SharpHalos {
 
                         // check for neighbouring syscall down
                         for (int z = 1; z < 50; z++) {
-                            Copy((FunctionAddress + (-32 * z)), ref FunctionOpcode, 0, 24);
+                            Copy((FunctionAddress + (32 * z)), ref FunctionOpcode, 0, 24);
                             if (CheckStubIntegrity(FunctionOpcode)) {
                                 SyscallTableEntry table = new SyscallTableEntry();
                                 table.Name = FunctionName;
